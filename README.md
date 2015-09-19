@@ -26,7 +26,7 @@ An Android image processor library providing a variety of transformations for [F
 ## Step 1
 
 #### Gradle
-```groovy
+```java
 repositories {
     jcenter()
     mavenCentral()  // GPUImage for Android
