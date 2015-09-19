@@ -1,10 +1,5 @@
 package jp.wasabeef.fresco.processors.gpu;
 
-import android.content.Context;
-import com.facebook.cache.common.CacheKey;
-import com.facebook.cache.common.SimpleCacheKey;
-import jp.co.cyberagent.android.gpuimage.GPUImageSepiaFilter;
-
 /**
  * Copyright (C) 2015 Wasabeef
  *
@@ -20,6 +15,11 @@ import jp.co.cyberagent.android.gpuimage.GPUImageSepiaFilter;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+import android.content.Context;
+import com.facebook.cache.common.CacheKey;
+import com.facebook.cache.common.SimpleCacheKey;
+import jp.co.cyberagent.android.gpuimage.GPUImageSepiaFilter;
 
 /**
  * Applies a simple sepia effect.

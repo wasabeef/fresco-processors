@@ -1,10 +1,5 @@
 package jp.wasabeef.fresco.processors.gpu;
 
-import android.content.Context;
-import com.facebook.cache.common.CacheKey;
-import com.facebook.cache.common.SimpleCacheKey;
-import jp.co.cyberagent.android.gpuimage.GPUImageBrightnessFilter;
-
 /**
  * Copyright (C) 2015 Wasabeef
  *
@@ -20,6 +15,11 @@ import jp.co.cyberagent.android.gpuimage.GPUImageBrightnessFilter;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+import android.content.Context;
+import com.facebook.cache.common.CacheKey;
+import com.facebook.cache.common.SimpleCacheKey;
+import jp.co.cyberagent.android.gpuimage.GPUImageBrightnessFilter;
 
 /**
  * brightness value ranges from -1.0 to 1.0, with 0.0 as the normal level

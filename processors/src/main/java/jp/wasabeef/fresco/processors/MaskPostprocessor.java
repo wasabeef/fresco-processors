@@ -1,17 +1,5 @@
 package jp.wasabeef.fresco.processors;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.drawable.Drawable;
-import com.facebook.cache.common.CacheKey;
-import com.facebook.cache.common.SimpleCacheKey;
-import com.facebook.imagepipeline.request.BasePostprocessor;
-import jp.wasabeef.fresco.processors.internal.Utils;
-
 /**
  * Copyright (C) 2015 Wasabeef
  *
@@ -27,6 +15,18 @@ import jp.wasabeef.fresco.processors.internal.Utils;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.drawable.Drawable;
+import com.facebook.cache.common.CacheKey;
+import com.facebook.cache.common.SimpleCacheKey;
+import com.facebook.imagepipeline.request.BasePostprocessor;
+import jp.wasabeef.fresco.processors.internal.Utils;
 
 public class MaskPostprocessor extends BasePostprocessor {
 

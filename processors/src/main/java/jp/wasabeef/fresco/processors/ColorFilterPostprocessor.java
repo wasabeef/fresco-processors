@@ -1,14 +1,5 @@
 package jp.wasabeef.fresco.processors;
 
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffColorFilter;
-import com.facebook.cache.common.CacheKey;
-import com.facebook.cache.common.SimpleCacheKey;
-import com.facebook.imagepipeline.request.BasePostprocessor;
-
 /**
  * Copyright (C) 2015 Wasabeef
  *
@@ -24,6 +15,15 @@ import com.facebook.imagepipeline.request.BasePostprocessor;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
+import com.facebook.cache.common.CacheKey;
+import com.facebook.cache.common.SimpleCacheKey;
+import com.facebook.imagepipeline.request.BasePostprocessor;
 
 public class ColorFilterPostprocessor extends BasePostprocessor {
 

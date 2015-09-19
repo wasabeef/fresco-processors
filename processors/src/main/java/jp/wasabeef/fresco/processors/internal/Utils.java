@@ -1,9 +1,5 @@
 package jp.wasabeef.fresco.processors.internal;
 
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
-
 /**
  * Copyright (C) 2015 Wasabeef
  *
@@ -19,6 +15,10 @@ import android.os.Build;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 
 public final class Utils {
 

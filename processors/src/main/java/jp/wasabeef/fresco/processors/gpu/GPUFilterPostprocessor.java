@@ -1,11 +1,5 @@
 package jp.wasabeef.fresco.processors.gpu;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import com.facebook.imagepipeline.request.BasePostprocessor;
-import jp.co.cyberagent.android.gpuimage.GPUImage;
-import jp.co.cyberagent.android.gpuimage.GPUImageFilter;
-
 /**
  * Copyright (C) 2015 Wasabeef
  *
@@ -21,6 +15,12 @@ import jp.co.cyberagent.android.gpuimage.GPUImageFilter;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import com.facebook.imagepipeline.request.BasePostprocessor;
+import jp.co.cyberagent.android.gpuimage.GPUImage;
+import jp.co.cyberagent.android.gpuimage.GPUImageFilter;
 
 public abstract class GPUFilterPostprocessor extends BasePostprocessor {
 

@@ -1,11 +1,5 @@
 package jp.wasabeef.fresco.processors.gpu;
 
-import android.content.Context;
-import android.graphics.PointF;
-import com.facebook.cache.common.CacheKey;
-import com.facebook.cache.common.SimpleCacheKey;
-import jp.co.cyberagent.android.gpuimage.GPUImageSwirlFilter;
-
 /**
  * Copyright (C) 2015 Wasabeef
  *
@@ -21,6 +15,12 @@ import jp.co.cyberagent.android.gpuimage.GPUImageSwirlFilter;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+import android.content.Context;
+import android.graphics.PointF;
+import com.facebook.cache.common.CacheKey;
+import com.facebook.cache.common.SimpleCacheKey;
+import jp.co.cyberagent.android.gpuimage.GPUImageSwirlFilter;
 
 /**
  * Creates a swirl distortion on the image.

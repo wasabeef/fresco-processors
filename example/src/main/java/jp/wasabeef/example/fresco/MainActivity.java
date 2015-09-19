@@ -1,14 +1,5 @@
 package jp.wasabeef.example.fresco;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import com.facebook.drawee.backends.pipeline.Fresco;
-import java.util.ArrayList;
-import java.util.List;
-import jp.wasabeef.example.fresco.MainAdapter.Type;
-
 /**
  * Copyright (C) 2015 Wasabeef
  *
@@ -24,6 +15,15 @@ import jp.wasabeef.example.fresco.MainAdapter.Type;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import com.facebook.drawee.backends.pipeline.Fresco;
+import java.util.ArrayList;
+import java.util.List;
+import jp.wasabeef.example.fresco.MainAdapter.Type;
 
 public class MainActivity extends AppCompatActivity {
 
