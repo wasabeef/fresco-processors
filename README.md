@@ -71,7 +71,7 @@ android {
 }
 ```
 
-## Transformations
+## Processors
 
 ### Color
 `ColorFilterPostprocessor`, `GrayscalePostprocessor`
