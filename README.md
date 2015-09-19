@@ -18,7 +18,7 @@ An Android image processor library providing a variety of transformations for [F
 ### Original Image
 <img src="art/demo-org.jpg" width="30%">
 
-### Transformations
+### Processors
 <img src="art/demo.gif" width="50%">
 
 # How do I use it?
@@ -80,7 +80,7 @@ android {
 `BlurPostprocessor`
 
 ### Mask
-`MaskTransformation`
+`MaskProcessors`
 
 ### GPU Filter (use [GPUImage](https://github.com/CyberAgent/android-gpuimage))
 **Will require add dependencies for GPUImage.**  
