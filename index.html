@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Fresco-processors by wasabeef</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>Fresco-processors</h1>
+          <h2>An Android image processor library providing a variety of image transformations for Fresco.</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/wasabeef/fresco-processors/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/wasabeef/fresco-processors/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/wasabeef/fresco-processors" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <h1>
+<a id="fresco-processors" class="anchor" href="#fresco-processors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Fresco Processors</h1>
+
+<p><a href="https://www.apache.org/licenses/LICENSE-2.0"><img src="https://img.shields.io/badge/license-Apache%202-blue.svg" alt="License"></a>
+<a href="https://bintray.com/wasabeef/maven/fresco-processors/_latestVersion"><img src="https://api.bintray.com/packages/wasabeef/maven/fresco-processors/images/download.svg" alt="Download"></a></p>
+
+<p>An Android image processor library providing a variety of transformations for <a href="https://github.com/facebook/fresco">Fresco</a>.</p>
+
+<p align="center">
+  <img src="https://github.com/wasabeef/fresco-processors/raw/master/art/logo.png" width="75%">
+</p>
+
+<h4>
+<a id="are-you-using-picasso-or-glide" class="anchor" href="#are-you-using-picasso-or-glide" aria-hidden="true"><span class="octicon octicon-link"></span></a>Are you using Picasso or Glide?</h4>
+
+<p><a href="https://github.com/wasabeef/picasso-transformations">Picasso Transformations</a><br>
+<a href="https://github.com/wasabeef/glide-transformations">Glide Transformations</a></p>
+
+<h1>
+<a id="demo" class="anchor" href="#demo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Demo</h1>
+
+<h3>
+<a id="original-image" class="anchor" href="#original-image" aria-hidden="true"><span class="octicon octicon-link"></span></a>Original Image</h3>
+
+<p><img src="https://github.com/wasabeef/fresco-processors/raw/master/art/demo-org.jpg" width="30%"></p>
+
+<h3>
+<a id="processors" class="anchor" href="#processors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Processors</h3>
+
+<p><img src="https://github.com/wasabeef/fresco-processors/raw/master/art/demo.gif" width="50%"></p>
+
+<h1>
+<a id="how-do-i-use-it" class="anchor" href="#how-do-i-use-it" aria-hidden="true"><span class="octicon octicon-link"></span></a>How do I use it?</h1>
+
+<h2>
+<a id="step-1" class="anchor" href="#step-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Step 1</h2>
+
+<h4>
+<a id="gradle" class="anchor" href="#gradle" aria-hidden="true"><span class="octicon octicon-link"></span></a>Gradle</h4>
+
+<div class="highlight highlight-source-java"><pre>repositories {
+    jcenter()
+    mavenCentral()  <span class="pl-c">// GPUImage for Android</span>
+}
+
+dependencies {
+    compile <span class="pl-s"><span class="pl-pds">'</span>jp.wasabeef:fresco-processors:1.0.0<span class="pl-pds">'</span></span>
+    <span class="pl-c">// If you want to use the GPU Filters</span>
+    compile <span class="pl-s"><span class="pl-pds">'</span>jp.co.cyberagent.android.gpuimage:gpuimage-library:1.3.0<span class="pl-pds">'</span></span>
+}</pre></div>
+
+<h2>
+<a id="step-2" class="anchor" href="#step-2" aria-hidden="true"><span class="octicon octicon-link"></span></a>Step 2</h2>
+
+<p>Set Fresco Postprocessor.</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-smi">ImageRequest</span> request <span class="pl-k">=</span>
+    <span class="pl-smi">ImageRequestBuilder</span><span class="pl-k">.</span>newBuilderWithResourceId(<span class="pl-smi">R</span><span class="pl-k">.</span>drawable<span class="pl-k">.</span>demo)
+      .setPostprocessor(processor)
+      .build();
+
+<span class="pl-smi">PipelineDraweeController</span> controller <span class="pl-k">=</span>
+    (<span class="pl-smi">PipelineDraweeController</span>) <span class="pl-smi">Fresco</span><span class="pl-k">.</span>newDraweeControllerBuilder()
+      .setImageRequest(request)
+      .setOldController(holder<span class="pl-k">.</span>drawee<span class="pl-k">.</span>getController())
+      .build();</pre></div>
+
+<h2>
+<a id="step-4" class="anchor" href="#step-4" aria-hidden="true"><span class="octicon octicon-link"></span></a>Step 4</h2>
+
+<p>If you are using <code>BlurPostprocessor</code>.</p>
+
+<div class="highlight highlight-source-groovy"><pre>android {
+    <span class="pl-k">..</span>.
+    defaultConfig {
+        <span class="pl-k">..</span>.
+        renderscriptTargetApi <span class="pl-c1">23</span>
+        renderscriptSupportModeEnabled <span class="pl-c1">true</span>
+    }
+}</pre></div>
+
+<h2>
+<a id="processors-1" class="anchor" href="#processors-1" aria-hidden="true"><span class="octicon octicon-link"></span></a>Processors</h2>
+
+<h3>
+<a id="color" class="anchor" href="#color" aria-hidden="true"><span class="octicon octicon-link"></span></a>Color</h3>
+
+<p><code>ColorFilterPostprocessor</code>, <code>GrayscalePostprocessor</code></p>
+
+<h3>
+<a id="blur" class="anchor" href="#blur" aria-hidden="true"><span class="octicon octicon-link"></span></a>Blur</h3>
+
+<p><code>BlurPostprocessor</code></p>
+
+<h3>
+<a id="mask" class="anchor" href="#mask" aria-hidden="true"><span class="octicon octicon-link"></span></a>Mask</h3>
+
+<p><code>MaskProcessors</code></p>
+
+<h3>
+<a id="gpu-filter-use-gpuimage" class="anchor" href="#gpu-filter-use-gpuimage" aria-hidden="true"><span class="octicon octicon-link"></span></a>GPU Filter (use <a href="https://github.com/CyberAgent/android-gpuimage">GPUImage</a>)</h3>
+
+<p><strong>Will require add dependencies for GPUImage.</strong>  </p>
+
+<p><code>ToonFilterPostprocessor</code>, <code>SepiaFilterPostprocessor</code>, <code>ContrastFilterPostprocessor</code><br>
+<code>InvertFilterPostprocessor</code>, <code>PixelationFilterPostprocessor</code>, <code>SketchFilterPostprocessor</code><br>
+<code>SwirlFilterPostprocessor</code>, <code>BrightnessFilterPostprocessor</code>, <code>KuawaharaFilterPostprocessor</code>
+<code>VignetteFilterPostprocessor</code></p>
+
+<h2>
+<a id="developed-by" class="anchor" href="#developed-by" aria-hidden="true"><span class="octicon octicon-link"></span></a>Developed By</h2>
+
+<p>Daichi Furiya (Wasabeef) - <a href="mailto:dadadada.chop@gmail.com">dadadada.chop@gmail.com</a></p>
+
+<p><a href="https://twitter.com/wasabeef_jp">
+<img alt="Follow me on Twitter" src="https://raw.githubusercontent.com/wasabeef/art/master/twitter.png" width="75">
+</a></p>
+
+<h2>
+<a id="contributions" class="anchor" href="#contributions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributions</h2>
+
+<p>Any contributions are welcome!</p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<pre><code>Copyright 2015 Wasabeef
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+</code></pre>
+        </section>
+
+        <footer>
+          Fresco-processors is maintained by <a href="https://github.com/wasabeef">wasabeef</a><br>
+          This page was generated by <a href="https://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
