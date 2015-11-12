@@ -31,37 +31,60 @@ import com.facebook.imagepipeline.request.BasePostprocessor;
 public class BlurPostprocessor extends BasePostprocessor {
 
   private static int MAX_RADIUS = 25;
+  private static int DEFAULT_DOWN_SAMPLING = 1;
 
   private Context context;
   private int radius;
+  private int sampling;
 
   public BlurPostprocessor(Context context) {
-    this(context, MAX_RADIUS);
+    this(context, MAX_RADIUS, DEFAULT_DOWN_SAMPLING);
   }
 
   public BlurPostprocessor(Context context, int radius) {
+    this(context, radius, DEFAULT_DOWN_SAMPLING);
+  }
+
+  public BlurPostprocessor(Context context, int radius, int sampling) {
     this.context = context;
     this.radius = radius;
+    this.sampling = sampling;
   }
 
   @Override public void process(Bitmap dest, Bitmap source) {
-    Canvas canvas = new Canvas(dest);
+
+    int width = source.getWidth();
+    int height = source.getHeight();
+    int scaledWidth = width / sampling;
+    int scaledHeight = height / sampling;
+
+    Bitmap blurredBitmap = Bitmap.createBitmap(scaledWidth, scaledHeight, Bitmap.Config.ARGB_8888);
+
+    Canvas canvas = new Canvas(blurredBitmap);
+    canvas.scale(1 / (float) sampling, 1 / (float) sampling);
     Paint paint = new Paint();
     paint.setFlags(Paint.FILTER_BITMAP_FLAG);
     canvas.drawBitmap(source, 0, 0, paint);
 
     RenderScript rs = RenderScript.create(context);
-    Allocation input = Allocation.createFromBitmap(rs, dest, Allocation.MipmapControl.MIPMAP_NONE,
-        Allocation.USAGE_SCRIPT);
+    Allocation input =
+        Allocation.createFromBitmap(rs, blurredBitmap, Allocation.MipmapControl.MIPMAP_NONE,
+            Allocation.USAGE_SCRIPT);
     Allocation output = Allocation.createTyped(rs, input.getType());
     ScriptIntrinsicBlur blur = ScriptIntrinsicBlur.create(rs, Element.U8_4(rs));
 
     blur.setInput(input);
     blur.setRadius(radius);
     blur.forEach(output);
-    output.copyTo(dest);
+    output.copyTo(blurredBitmap);
+
+    Bitmap scaledBitmap =
+        Bitmap.createScaledBitmap(blurredBitmap, dest.getWidth(), dest.getHeight(), true);
+    blurredBitmap.recycle();
 
     rs.destroy();
+
+    super.process(dest, scaledBitmap);
   }
 
   @Override public String getName() {
@@ -69,6 +92,6 @@ public class BlurPostprocessor extends BasePostprocessor {
   }
 
   @Override public CacheKey getPostprocessorCacheKey() {
-    return new SimpleCacheKey("radius=" + radius);
+    return new SimpleCacheKey("radius=" + radius + ",sampling=" + sampling);
   }
 }
