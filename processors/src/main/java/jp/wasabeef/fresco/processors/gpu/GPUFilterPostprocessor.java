@@ -28,7 +28,7 @@ public abstract class GPUFilterPostprocessor extends BasePostprocessor {
   private GPUImageFilter filter;
 
   public GPUFilterPostprocessor(Context context, GPUImageFilter filter) {
-    this.context = context;
+    this.context = context.getApplicationContext();
     this.filter = filter;
   }
 

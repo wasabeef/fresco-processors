@@ -46,7 +46,7 @@ public class BlurPostprocessor extends BasePostprocessor {
   }
 
   public BlurPostprocessor(Context context, int radius, int sampling) {
-    this.context = context;
+    this.context = context.getApplicationContext();
     this.radius = radius;
     this.sampling = sampling;
   }

@@ -44,7 +44,7 @@ public class MaskPostprocessor extends BasePostprocessor {
    * same make file name. If you have a good idea please tell us, thanks.
    */
   public MaskPostprocessor(Context context, int maskId) {
-    this.context = context;
+    this.context = context.getApplicationContext();
     this.maskId = maskId;
   }
 
