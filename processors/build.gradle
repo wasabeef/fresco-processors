@@ -8,7 +8,7 @@ android {
   defaultConfig {
     minSdkVersion MIN_SDK_VERSION as int
     targetSdkVersion TARGET_SDK_VERSION as int
-    versionCode VERSION_CODE as int
+    versionCode "git rev-list origin/master --count".execute().text.toInteger()
     versionName VERSION_NAME
 
     // Warning:Renderscript support mode is not currently supported with renderscript target 21+
@@ -23,10 +23,10 @@ dependencies {
 }
 
 publish {
-  userOrg = 'wasabeef'
-  groupId = 'jp.wasabeef'
-  artifactId = 'fresco-processors'
+  userOrg = POM_DEVELOPER_ID
+  groupId = GROUP
+  artifactId = ARTIFACT_ID
   publishVersion = VERSION_NAME
-  desc = 'An Android processor library providing a variety of image transformations for Fresco. '
-  website = 'https://github.com/wasabeef/fresco-processors'
+  desc = POM_DESCRIPTION
+  website = POM_URL
 }
