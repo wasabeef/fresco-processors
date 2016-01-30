@@ -90,6 +90,11 @@ android {
 `SwirlFilterPostprocessor`, `BrightnessFilterPostprocessor`, `KuawaharaFilterPostprocessor`
 `VignetteFilterPostprocessor`
 
+### Proguard
+```
+-dontwarn jp.co.cyberagent.android.gpuimage.**
+```
+
 Developed By
 -------
 Daichi Furiya (Wasabeef) - <dadadada.chop@gmail.com>
