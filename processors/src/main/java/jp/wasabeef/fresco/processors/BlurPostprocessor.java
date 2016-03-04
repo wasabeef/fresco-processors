@@ -20,15 +20,12 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.support.v8.renderscript.Allocation;
-import android.support.v8.renderscript.Element;
-import android.support.v8.renderscript.RSRuntimeException;
-import android.support.v8.renderscript.RenderScript;
-import android.support.v8.renderscript.ScriptIntrinsicBlur;
+import android.os.Build;
 import com.facebook.cache.common.CacheKey;
 import com.facebook.cache.common.SimpleCacheKey;
 import com.facebook.imagepipeline.request.BasePostprocessor;
 import jp.wasabeef.fresco.processors.internal.FastBlur;
+import jp.wasabeef.fresco.processors.internal.RSBlur;
 
 public class BlurPostprocessor extends BasePostprocessor {
 
@@ -68,25 +65,14 @@ public class BlurPostprocessor extends BasePostprocessor {
     paint.setFlags(Paint.FILTER_BITMAP_FLAG);
     canvas.drawBitmap(source, 0, 0, paint);
 
-    RenderScript rs = null;
-    try {
-      rs = RenderScript.create(context);
-      Allocation input =
-          Allocation.createFromBitmap(rs, blurredBitmap, Allocation.MipmapControl.MIPMAP_NONE,
-              Allocation.USAGE_SCRIPT);
-      Allocation output = Allocation.createTyped(rs, input.getType());
-      ScriptIntrinsicBlur blur = ScriptIntrinsicBlur.create(rs, Element.U8_4(rs));
-
-      blur.setInput(input);
-      blur.setRadius(radius);
-      blur.forEach(output);
-      output.copyTo(blurredBitmap);
-    } catch (RSRuntimeException e) {
-      blurredBitmap = FastBlur.doBlur(blurredBitmap, radius, true);
-    } finally {
-      if (rs != null) {
-        rs.destroy();
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+      try {
+        blurredBitmap = RSBlur.blur(context, blurredBitmap, radius);
+      } catch (android.renderscript.RSRuntimeException e) {
+        blurredBitmap = FastBlur.blur(blurredBitmap, radius, true);
       }
+    } else {
+      blurredBitmap = FastBlur.blur(blurredBitmap, radius, true);
     }
 
     Bitmap scaledBitmap =

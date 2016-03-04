@@ -33,7 +33,7 @@ repositories {
 }
 
 dependencies {
-    compile 'jp.wasabeef:fresco-processors:1.2.0'
+    compile 'jp.wasabeef:fresco-processors:2.0.0'
     // If you want to use the GPU Filters
     compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.3.0'
 }
@@ -54,21 +54,6 @@ PipelineDraweeController controller =
       .setImageRequest(request)
       .setOldController(holder.drawee.getController())
       .build();
-```
-
-## Step 4
-
-If you are using `BlurPostprocessor`.
-
-```groovy
-android {
-    ...
-    defaultConfig {
-        // Warning:Renderscript support mode is not currently supported with renderscript target 21+
-        renderscriptTargetApi 20
-        renderscriptSupportModeEnabled true
-    }
-}
 ```
 
 ## Processors
