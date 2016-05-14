@@ -27,17 +27,10 @@ public final class Utils {
   }
 
   public static Drawable getMaskDrawable(Context context, int maskId) {
-    Drawable drawable;
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-      drawable = context.getDrawable(maskId);
-    } else {
-      drawable = context.getResources().getDrawable(maskId);
-    }
-
+    Drawable drawable = ContextCompat.getDrawable(context, maskRes)
     if (drawable == null) {
       throw new IllegalArgumentException("maskId is invalid");
     }
-
     return drawable;
   }
 }
