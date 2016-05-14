@@ -18,6 +18,7 @@ package jp.wasabeef.fresco.processors.internal;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 import android.os.Build;
 
 public final class Utils {
@@ -27,7 +28,7 @@ public final class Utils {
   }
 
   public static Drawable getMaskDrawable(Context context, int maskId) {
-    Drawable drawable = ContextCompat.getDrawable(context, maskRes)
+    Drawable drawable = ContextCompat.getDrawable(context, maskId)
     if (drawable == null) {
       throw new IllegalArgumentException("maskId is invalid");
     }
