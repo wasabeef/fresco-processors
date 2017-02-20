@@ -75,6 +75,13 @@ PipelineDraweeController controller =
 `SwirlFilterPostprocessor`, `BrightnessFilterPostprocessor`, `KuawaharaFilterPostprocessor`
 `VignetteFilterPostprocessor`
 
+## Combine Processors
+```java
+processor = new CombinePostProcessors.Builder()
+                .add(new BlurPostprocessor(context))
+                .add(new GrayscalePostprocessor())
+                .build();
+```
 
 Developed By
 -------
