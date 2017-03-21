@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
     List<Type> dataSet = new ArrayList<>();
+    dataSet.add(Type.BlurAndGrayscale);
     dataSet.add(Type.Blur);
     dataSet.add(Type.Grayscale);
     dataSet.add(Type.ColorFilter);

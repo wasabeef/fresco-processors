@@ -34,6 +34,7 @@ import com.facebook.imagepipeline.request.Postprocessor;
 import java.util.List;
 import jp.wasabeef.fresco.processors.BlurPostprocessor;
 import jp.wasabeef.fresco.processors.ColorFilterPostprocessor;
+import jp.wasabeef.fresco.processors.CombinePostProcessors;
 import jp.wasabeef.fresco.processors.GrayscalePostprocessor;
 import jp.wasabeef.fresco.processors.MaskPostprocessor;
 import jp.wasabeef.fresco.processors.gpu.BrightnessFilterPostprocessor;
@@ -67,7 +68,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
     Swirl,
     Brightness,
     Kuawahara,
-    Vignette
+    Vignette,
+    BlurAndGrayscale
   }
 
   public MainAdapter(Context context, List<Type> dataSet) {
@@ -105,6 +107,12 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         break;
       case Blur:
         processor = new BlurPostprocessor(context, 25);
+        break;
+      case BlurAndGrayscale:
+        processor = new CombinePostProcessors.Builder()
+                .add(new BlurPostprocessor(context, 25))
+                .add(new GrayscalePostprocessor())
+                .build();
         break;
       case Toon:
         processor = new ToonFilterPostprocessor(context);
