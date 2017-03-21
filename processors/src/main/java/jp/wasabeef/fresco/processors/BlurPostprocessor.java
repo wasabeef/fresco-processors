@@ -65,7 +65,7 @@ public class BlurPostprocessor extends BasePostprocessor {
     paint.setFlags(Paint.FILTER_BITMAP_FLAG);
     canvas.drawBitmap(source, 0, 0, paint);
 
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
       try {
         blurredBitmap = RSBlur.blur(context, blurredBitmap, radius);
       } catch (android.renderscript.RSRuntimeException e) {
