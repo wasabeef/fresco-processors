@@ -1,7 +1,7 @@
 package jp.wasabeef.example.fresco;
 
 /**
- * Copyright (C) 2015 Wasabeef
+ * Copyright (C) 2017 Wasabeef
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerView = (RecyclerView) findViewById(R.id.list);
     recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+    recyclerView.setHasFixedSize(true);
 
     List<Type> dataSet = new ArrayList<>();
     dataSet.add(Type.BlurAndGrayscale);
