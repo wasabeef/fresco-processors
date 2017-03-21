@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerView = (RecyclerView) findViewById(R.id.list);
     recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+    recyclerView.setHasFixedSize(true);
 
     List<Type> dataSet = new ArrayList<>();
     dataSet.add(Type.BlurAndGrayscale);
