@@ -12,11 +12,11 @@ import java.util.List;
 
 public class CombinePostProcessors extends BasePostprocessor {
 
-    private List<BasePostprocessor> processors;
+    private List<BasePostprocessor> mProcessors;
 
     private CombinePostProcessors(List<BasePostprocessor> processors) {
         super();
-        this.processors = processors;
+        mProcessors = processors;
     }
 
     @Override
@@ -25,7 +25,7 @@ public class CombinePostProcessors extends BasePostprocessor {
         Paint paint = new Paint();
         canvas.drawBitmap(src, 0, 0, paint);
 
-        for(BasePostprocessor processor : processors) {
+        for(BasePostprocessor processor : mProcessors) {
             processor.process(dest, dest);
         }
     }
