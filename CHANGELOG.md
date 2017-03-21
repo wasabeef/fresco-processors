@@ -1,6 +1,19 @@
 Change Log
 ==========
 
+Version 2.1.0 *(2017-03-21)*
+----------------------------
+
+Update:
+- Compile & Target SDK Version 23 -> 25
+- Build Tools 23.0.2 -> 25.0.2
+- Support Library 23.2.1 -> 25.3.0
+- GPUImage for Android 1.3.0 -> 1.4.1
+- Fresco 0.9.0 -> 1.1.0
+
+Bug Fix:
+- Additional resource cleanup in RSBlur.
+
 Version 2.0.0 *(2016-03-04)*
 ----------------------------
 
