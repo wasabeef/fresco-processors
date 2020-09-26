@@ -2,12 +2,11 @@ apply plugin: 'com.android.application'
 
 android {
   compileSdkVersion COMPILE_SDK_VERSION as int
-  buildToolsVersion BUILD_TOOLS_VERSION
 
   defaultConfig {
     minSdkVersion MIN_SDK_VERSION as int
     targetSdkVersion TARGET_SDK_VERSION as int
-    versionCode "git rev-list origin/master --count".execute().text.toInteger()
+    versionCode VERSION_CODE as int
     versionName VERSION_NAME
   }
 
