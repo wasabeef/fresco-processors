@@ -12,7 +12,7 @@ android {
 }
 
 dependencies {
-  compile "com.facebook.fresco:fresco:${FRESCO_VERSION}"
+  implementation "com.facebook.fresco:fresco:${FRESCO_VERSION}"
   compileOnly "jp.co.cyberagent.android:gpuimage:${GPUIMAGE_VERSION}"
 }
 
