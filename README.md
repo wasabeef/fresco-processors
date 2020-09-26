@@ -1,3 +1,14 @@
+<table>
+  <tr>
+    <td>
+        <h3>DEPRECATED</h3>
+        Fresco Processors is deprecated. No more development will be taking place. For an up-to-date version,
+        please use <a href="https://github.com/wasabeef/transformers">Transformers</a>. Thanks for all your support!
+    </td>
+  </tr>
+</table>
+<br/><br/>
+
 Fresco Processors
 ======================
 [![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
