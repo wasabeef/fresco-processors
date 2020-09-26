@@ -28,8 +28,6 @@ import com.facebook.cache.common.CacheKey;
 import com.facebook.cache.common.SimpleCacheKey;
 import com.facebook.imagepipeline.request.BasePostprocessor;
 
-import jp.wasabeef.fresco.processors.internal.Utils;
-
 public class MaskPostprocessor extends BasePostprocessor {
 
   private static final Paint paint = new Paint();
@@ -56,7 +54,7 @@ public class MaskPostprocessor extends BasePostprocessor {
     Bitmap result =
       Bitmap.createBitmap(source.getWidth(), source.getHeight(), Bitmap.Config.ARGB_8888);
 
-    Drawable mask = Utils.getMaskDrawable(context, maskId);
+    Drawable mask = context.getDrawable(maskId);
 
     Canvas canvas = new Canvas(result);
     mask.setBounds(0, 0, source.getWidth(), source.getHeight());
