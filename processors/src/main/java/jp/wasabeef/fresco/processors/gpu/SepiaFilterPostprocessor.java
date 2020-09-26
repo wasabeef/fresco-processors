@@ -25,27 +25,27 @@ import jp.co.cyberagent.android.gpuimage.filter.GPUImageSepiaToneFilter;
 
 /**
  * Applies a simple sepia effect.
- *
+ * <p>
  * The intensity with a default of 1.0.
  */
 public class SepiaFilterPostprocessor extends GPUFilterPostprocessor {
 
-    private final float intensity;
+  private final float intensity;
 
-    public SepiaFilterPostprocessor(Context context) {
-        this(context, 1.0f);
-    }
+  public SepiaFilterPostprocessor(Context context) {
+    this(context, 1.0f);
+  }
 
-    public SepiaFilterPostprocessor(Context context, float intensity) {
-        super(context, new GPUImageSepiaToneFilter());
-        this.intensity = intensity;
+  public SepiaFilterPostprocessor(Context context, float intensity) {
+    super(context, new GPUImageSepiaToneFilter());
+    this.intensity = intensity;
 
-        GPUImageSepiaToneFilter filter = getFilter();
-        filter.setIntensity(intensity);
-    }
+    GPUImageSepiaToneFilter filter = getFilter();
+    filter.setIntensity(intensity);
+  }
 
-    @Override
-    public CacheKey getPostprocessorCacheKey() {
-        return new SimpleCacheKey("intensity=" + intensity);
-    }
+  @Override
+  public CacheKey getPostprocessorCacheKey() {
+    return new SimpleCacheKey("intensity=" + intensity);
+  }
 }

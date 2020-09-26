@@ -31,34 +31,34 @@ import jp.wasabeef.example.fresco.MainAdapter.Type;
 
 public class MainActivity extends AppCompatActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Fresco.initialize(this);
-        setContentView(R.layout.activity_main);
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    Fresco.initialize(this);
+    setContentView(R.layout.activity_main);
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.list);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
-        recyclerView.setHasFixedSize(true);
+    RecyclerView recyclerView = findViewById(R.id.list);
+    recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+    recyclerView.setHasFixedSize(true);
 
-        List<Type> dataSet = new ArrayList<>();
-        dataSet.add(Type.BlurAndGrayscale);
-        dataSet.add(Type.Blur);
-        dataSet.add(Type.Grayscale);
-        dataSet.add(Type.ColorFilter);
-        dataSet.add(Type.Mask);
-        dataSet.add(Type.NinePatchMask);
-        dataSet.add(Type.Pixel);
-        dataSet.add(Type.Vignette);
-        dataSet.add(Type.Kuawahara);
-        dataSet.add(Type.Brightness);
-        dataSet.add(Type.Swirl);
-        dataSet.add(Type.Sketch);
-        dataSet.add(Type.Invert);
-        dataSet.add(Type.Contrast);
-        dataSet.add(Type.Sepia);
-        dataSet.add(Type.Toon);
+    List<Type> dataSet = new ArrayList<>();
+    dataSet.add(Type.BlurAndGrayscale);
+    dataSet.add(Type.Blur);
+    dataSet.add(Type.Grayscale);
+    dataSet.add(Type.ColorFilter);
+    dataSet.add(Type.Mask);
+    dataSet.add(Type.NinePatchMask);
+    dataSet.add(Type.Pixel);
+    dataSet.add(Type.Vignette);
+    dataSet.add(Type.Kuawahara);
+    dataSet.add(Type.Brightness);
+    dataSet.add(Type.Swirl);
+    dataSet.add(Type.Sketch);
+    dataSet.add(Type.Invert);
+    dataSet.add(Type.Contrast);
+    dataSet.add(Type.Sepia);
+    dataSet.add(Type.Toon);
 
-        recyclerView.setAdapter(new MainAdapter(this, dataSet));
-    }
+    recyclerView.setAdapter(new MainAdapter(this, dataSet));
+  }
 }

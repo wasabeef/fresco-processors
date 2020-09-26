@@ -25,27 +25,27 @@ import jp.co.cyberagent.android.gpuimage.filter.GPUImagePixelationFilter;
 
 /**
  * Applies a Pixelation effect to the image.
- *
+ * <p>
  * The pixel with a default of 10.0.
  */
 public class PixelationFilterPostprocessor extends GPUFilterPostprocessor {
 
-    private final float pixel;
+  private final float pixel;
 
-    public PixelationFilterPostprocessor(Context context) {
-        this(context, 10f);
-    }
+  public PixelationFilterPostprocessor(Context context) {
+    this(context, 10f);
+  }
 
-    public PixelationFilterPostprocessor(Context context, float pixel) {
-        super(context, new GPUImagePixelationFilter());
-        this.pixel = pixel;
+  public PixelationFilterPostprocessor(Context context, float pixel) {
+    super(context, new GPUImagePixelationFilter());
+    this.pixel = pixel;
 
-        GPUImagePixelationFilter filter = getFilter();
-        filter.setPixel(pixel);
-    }
+    GPUImagePixelationFilter filter = getFilter();
+    filter.setPixel(pixel);
+  }
 
-    @Override
-    public CacheKey getPostprocessorCacheKey() {
-        return new SimpleCacheKey("pixel=" + pixel);
-    }
+  @Override
+  public CacheKey getPostprocessorCacheKey() {
+    return new SimpleCacheKey("pixel=" + pixel);
+  }
 }

@@ -30,27 +30,27 @@ import jp.co.cyberagent.android.gpuimage.filter.GPUImageToonFilter;
  */
 public class ToonFilterPostprocessor extends GPUFilterPostprocessor {
 
-    private final float threshold;
-    private final float quantizationLevels;
+  private final float threshold;
+  private final float quantizationLevels;
 
-    public ToonFilterPostprocessor(Context context) {
-        this(context, .2f, 10.0f);
-    }
+  public ToonFilterPostprocessor(Context context) {
+    this(context, .2f, 10.0f);
+  }
 
-    public ToonFilterPostprocessor(Context context, float threshold, float quantizationLevels) {
-        super(context, new GPUImageToonFilter());
+  public ToonFilterPostprocessor(Context context, float threshold, float quantizationLevels) {
+    super(context, new GPUImageToonFilter());
 
-        this.threshold = threshold;
-        this.quantizationLevels = quantizationLevels;
+    this.threshold = threshold;
+    this.quantizationLevels = quantizationLevels;
 
-        GPUImageToonFilter filter = getFilter();
-        filter.setThreshold(this.threshold);
-        filter.setQuantizationLevels(this.quantizationLevels);
-    }
+    GPUImageToonFilter filter = getFilter();
+    filter.setThreshold(this.threshold);
+    filter.setQuantizationLevels(this.quantizationLevels);
+  }
 
-    @Override
-    public CacheKey getPostprocessorCacheKey() {
-        return new SimpleCacheKey(
-                "threshold=" + threshold + ",quantizationLevels=" + quantizationLevels);
-    }
+  @Override
+  public CacheKey getPostprocessorCacheKey() {
+    return new SimpleCacheKey(
+      "threshold=" + threshold + ",quantizationLevels=" + quantizationLevels);
+  }
 }

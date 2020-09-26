@@ -29,34 +29,34 @@ import jp.co.cyberagent.android.gpuimage.filter.GPUImageSwirlFilter;
  */
 public class SwirlFilterPostprocessor extends GPUFilterPostprocessor {
 
-    private final float radius;
-    private final float angle;
-    private final PointF center;
+  private final float radius;
+  private final float angle;
+  private final PointF center;
 
-    public SwirlFilterPostprocessor(Context context) {
-        this(context, 0.5f, 1.0f, new PointF(0.5f, 0.5f));
-    }
+  public SwirlFilterPostprocessor(Context context) {
+    this(context, 0.5f, 1.0f, new PointF(0.5f, 0.5f));
+  }
 
-    /**
-     * @param radius from 0.0 to 1.0, default 0.5
-     * @param angle minimum 0.0, default 1.0
-     * @param center default (0.5, 0.5)
-     */
-    public SwirlFilterPostprocessor(Context context, float radius, float angle, PointF center) {
-        super(context, new GPUImageSwirlFilter());
-        this.radius = radius;
-        this.angle = angle;
-        this.center = center;
+  /**
+   * @param radius from 0.0 to 1.0, default 0.5
+   * @param angle  minimum 0.0, default 1.0
+   * @param center default (0.5, 0.5)
+   */
+  public SwirlFilterPostprocessor(Context context, float radius, float angle, PointF center) {
+    super(context, new GPUImageSwirlFilter());
+    this.radius = radius;
+    this.angle = angle;
+    this.center = center;
 
-        GPUImageSwirlFilter filter = getFilter();
-        filter.setRadius(this.radius);
-        filter.setAngle(this.angle);
-        filter.setCenter(this.center);
-    }
+    GPUImageSwirlFilter filter = getFilter();
+    filter.setRadius(this.radius);
+    filter.setAngle(this.angle);
+    filter.setCenter(this.center);
+  }
 
-    @Override
-    public CacheKey getPostprocessorCacheKey() {
-        return new SimpleCacheKey(
-                "radius=" + radius + ",angle=" + angle + ",center=" + center.toString());
-    }
+  @Override
+  public CacheKey getPostprocessorCacheKey() {
+    return new SimpleCacheKey(
+      "radius=" + radius + ",angle=" + angle + ",center=" + center.toString());
+  }
 }

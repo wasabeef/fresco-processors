@@ -25,12 +25,12 @@ import jp.co.cyberagent.android.gpuimage.filter.GPUImageColorInvertFilter;
 
 public class InvertFilterPostprocessor extends GPUFilterPostprocessor {
 
-    public InvertFilterPostprocessor(Context context) {
-        super(context, new GPUImageColorInvertFilter());
-    }
+  public InvertFilterPostprocessor(Context context) {
+    super(context, new GPUImageColorInvertFilter());
+  }
 
-    @Override
-    public CacheKey getPostprocessorCacheKey() {
-        return new SimpleCacheKey("invert");
-    }
+  @Override
+  public CacheKey getPostprocessorCacheKey() {
+    return new SimpleCacheKey("invert");
+  }
 }

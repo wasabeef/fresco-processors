@@ -26,31 +26,31 @@ import jp.co.cyberagent.android.gpuimage.filter.GPUImageFilter;
 
 public abstract class GPUFilterPostprocessor extends BasePostprocessor {
 
-    private final Context context;
-    private final GPUImageFilter filter;
+  private final Context context;
+  private final GPUImageFilter filter;
 
-    public GPUFilterPostprocessor(Context context, GPUImageFilter filter) {
-        this.context = context.getApplicationContext();
-        this.filter = filter;
-    }
+  public GPUFilterPostprocessor(Context context, GPUImageFilter filter) {
+    this.context = context.getApplicationContext();
+    this.filter = filter;
+  }
 
-    @Override
-    public void process(Bitmap dest, Bitmap source) {
-        GPUImage gpuImage = new GPUImage(context);
-        gpuImage.setImage(source);
-        gpuImage.setFilter(filter);
-        Bitmap bitmap = gpuImage.getBitmapWithFilterApplied();
+  @Override
+  public void process(Bitmap dest, Bitmap source) {
+    GPUImage gpuImage = new GPUImage(context);
+    gpuImage.setImage(source);
+    gpuImage.setFilter(filter);
+    Bitmap bitmap = gpuImage.getBitmapWithFilterApplied();
 
-        super.process(dest, bitmap);
-    }
+    super.process(dest, bitmap);
+  }
 
-    @Override
-    public String getName() {
-        return getClass().getSimpleName();
-    }
+  @Override
+  public String getName() {
+    return getClass().getSimpleName();
+  }
 
-    @SuppressWarnings("unchecked")
-    public <T> T getFilter() {
-        return (T) filter;
-    }
+  @SuppressWarnings("unchecked")
+  public <T> T getFilter() {
+    return (T) filter;
+  }
 }

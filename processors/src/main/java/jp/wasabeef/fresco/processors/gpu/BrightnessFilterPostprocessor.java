@@ -28,22 +28,22 @@ import jp.co.cyberagent.android.gpuimage.filter.GPUImageBrightnessFilter;
  */
 public class BrightnessFilterPostprocessor extends GPUFilterPostprocessor {
 
-    private final float brightness;
+  private final float brightness;
 
-    public BrightnessFilterPostprocessor(Context context) {
-        this(context, 0.0f);
-    }
+  public BrightnessFilterPostprocessor(Context context) {
+    this(context, 0.0f);
+  }
 
-    public BrightnessFilterPostprocessor(Context context, float brightness) {
-        super(context, new GPUImageBrightnessFilter());
-        this.brightness = brightness;
+  public BrightnessFilterPostprocessor(Context context, float brightness) {
+    super(context, new GPUImageBrightnessFilter());
+    this.brightness = brightness;
 
-        GPUImageBrightnessFilter filter = getFilter();
-        filter.setBrightness(brightness);
-    }
+    GPUImageBrightnessFilter filter = getFilter();
+    filter.setBrightness(brightness);
+  }
 
-    @Override
-    public CacheKey getPostprocessorCacheKey() {
-        return new SimpleCacheKey("brightness=" + brightness);
-    }
+  @Override
+  public CacheKey getPostprocessorCacheKey() {
+    return new SimpleCacheKey("brightness=" + brightness);
+  }
 }

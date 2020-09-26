@@ -25,12 +25,12 @@ import jp.co.cyberagent.android.gpuimage.filter.GPUImageSketchFilter;
 
 public class SketchFilterPostprocessor extends GPUFilterPostprocessor {
 
-    public SketchFilterPostprocessor(Context context) {
-        super(context, new GPUImageSketchFilter());
-    }
+  public SketchFilterPostprocessor(Context context) {
+    super(context, new GPUImageSketchFilter());
+  }
 
-    @Override
-    public CacheKey getPostprocessorCacheKey() {
-        return new SimpleCacheKey("sketch");
-    }
+  @Override
+  public CacheKey getPostprocessorCacheKey() {
+    return new SimpleCacheKey("sketch");
+  }
 }

@@ -33,35 +33,35 @@ import jp.co.cyberagent.android.gpuimage.filter.GPUImageVignetteFilter;
  */
 public class VignetteFilterPostprocessor extends GPUFilterPostprocessor {
 
-    private final PointF center;
-    private final float[] vignetteColor;
-    private final float vignetteStart;
-    private final float vignetteEnd;
+  private final PointF center;
+  private final float[] vignetteColor;
+  private final float vignetteStart;
+  private final float vignetteEnd;
 
-    public VignetteFilterPostprocessor(Context context) {
-        this(context, new PointF(0.5f, 0.5f), new float[]{0.0f, 0.0f, 0.0f}, 0.0f, 0.75f);
-    }
+  public VignetteFilterPostprocessor(Context context) {
+    this(context, new PointF(0.5f, 0.5f), new float[]{0.0f, 0.0f, 0.0f}, 0.0f, 0.75f);
+  }
 
-    public VignetteFilterPostprocessor(Context context, PointF center, float[] color, float start,
-                                       float end) {
-        super(context, new GPUImageVignetteFilter());
+  public VignetteFilterPostprocessor(Context context, PointF center, float[] color, float start,
+                                     float end) {
+    super(context, new GPUImageVignetteFilter());
 
-        this.center = center;
-        this.vignetteColor = color;
-        this.vignetteStart = start;
-        this.vignetteEnd = end;
+    this.center = center;
+    this.vignetteColor = color;
+    this.vignetteStart = start;
+    this.vignetteEnd = end;
 
-        GPUImageVignetteFilter filter = getFilter();
-        filter.setVignetteCenter(this.center);
-        filter.setVignetteColor(this.vignetteColor);
-        filter.setVignetteStart(this.vignetteStart);
-        filter.setVignetteEnd(this.vignetteEnd);
-    }
+    GPUImageVignetteFilter filter = getFilter();
+    filter.setVignetteCenter(this.center);
+    filter.setVignetteColor(this.vignetteColor);
+    filter.setVignetteStart(this.vignetteStart);
+    filter.setVignetteEnd(this.vignetteEnd);
+  }
 
-    @Override
-    public CacheKey getPostprocessorCacheKey() {
-        return new SimpleCacheKey("center=" + center.toString() +
-                ",color=" + Arrays.toString(vignetteColor) +
-                ",start=" + vignetteStart + ",end=" + vignetteEnd);
-    }
+  @Override
+  public CacheKey getPostprocessorCacheKey() {
+    return new SimpleCacheKey("center=" + center.toString() +
+      ",color=" + Arrays.toString(vignetteColor) +
+      ",start=" + vignetteStart + ",end=" + vignetteEnd);
+  }
 }

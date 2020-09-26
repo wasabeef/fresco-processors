@@ -28,22 +28,22 @@ import jp.co.cyberagent.android.gpuimage.filter.GPUImageContrastFilter;
  */
 public class ContrastFilterPostprocessor extends GPUFilterPostprocessor {
 
-    private final float contrast;
+  private final float contrast;
 
-    public ContrastFilterPostprocessor(Context context) {
-        this(context, 1.0f);
-    }
+  public ContrastFilterPostprocessor(Context context) {
+    this(context, 1.0f);
+  }
 
-    public ContrastFilterPostprocessor(Context context, float contrast) {
-        super(context, new GPUImageContrastFilter());
-        this.contrast = contrast;
+  public ContrastFilterPostprocessor(Context context, float contrast) {
+    super(context, new GPUImageContrastFilter());
+    this.contrast = contrast;
 
-        GPUImageContrastFilter filter = getFilter();
-        filter.setContrast(contrast);
-    }
+    GPUImageContrastFilter filter = getFilter();
+    filter.setContrast(contrast);
+  }
 
-    @Override
-    public CacheKey getPostprocessorCacheKey() {
-        return new SimpleCacheKey("contrast=" + contrast);
-    }
+  @Override
+  public CacheKey getPostprocessorCacheKey() {
+    return new SimpleCacheKey("contrast=" + contrast);
+  }
 }
