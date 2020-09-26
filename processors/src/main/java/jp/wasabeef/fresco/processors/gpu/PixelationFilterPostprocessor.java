@@ -1,14 +1,14 @@
 package jp.wasabeef.fresco.processors.gpu;
 
 /**
- * Copyright (C) 2017 Wasabeef
- *
+ * Copyright (C) 2020 Wasabeef
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * <p>
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -17,18 +17,20 @@ package jp.wasabeef.fresco.processors.gpu;
  */
 
 import android.content.Context;
+
 import com.facebook.cache.common.CacheKey;
 import com.facebook.cache.common.SimpleCacheKey;
-import jp.co.cyberagent.android.gpuimage.GPUImagePixelationFilter;
+
+import jp.co.cyberagent.android.gpuimage.filter.GPUImagePixelationFilter;
 
 /**
  * Applies a Pixelation effect to the image.
- *
+ * <p>
  * The pixel with a default of 10.0.
  */
 public class PixelationFilterPostprocessor extends GPUFilterPostprocessor {
 
-  private float pixel;
+  private final float pixel;
 
   public PixelationFilterPostprocessor(Context context) {
     this(context, 10f);
@@ -42,7 +44,8 @@ public class PixelationFilterPostprocessor extends GPUFilterPostprocessor {
     filter.setPixel(pixel);
   }
 
-  @Override public CacheKey getPostprocessorCacheKey() {
+  @Override
+  public CacheKey getPostprocessorCacheKey() {
     return new SimpleCacheKey("pixel=" + pixel);
   }
 }

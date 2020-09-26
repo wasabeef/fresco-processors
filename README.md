@@ -26,16 +26,15 @@ An Android image processor library providing a variety of transformations for [F
 ## Step 1
 
 #### Gradle
-```java
+```groovy
 repositories {
-    jcenter()
-    mavenCentral()  // GPUImage for Android
+  jcenter()
 }
 
 dependencies {
-    compile 'jp.wasabeef:fresco-processors:2.1.0'
-    // If you want to use the GPU Filters
-    compile 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.3.0'
+  implementation 'jp.wasabeef:fresco-processors:2.x.x'
+  // If you want to use the GPU Filters
+  implementation 'jp.co.cyberagent.android:gpuimage:2.x.x'
 }
 ```
 
@@ -100,7 +99,7 @@ Any contributions are welcome!
 License
 -------
 
-    Copyright 2017 Wasabeef
+    Copyright (C) 2020 Wasabeef
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.

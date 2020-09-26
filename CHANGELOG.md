@@ -1,6 +1,16 @@
 Change Log
 ==========
 
+Version 2.2.0 *(2020-09-27)*
+----------------------------
+
+Update:
+- Compile & Target SDK Version -> 30
+- Use AndroidX
+- Fresco -> 2.3.0
+- GPUImage for Android 2.0.4
+- Code cleanup
+
 Version 2.1.0 *(2017-03-21)*
 ----------------------------
 

@@ -1,14 +1,14 @@
 package jp.wasabeef.example.fresco;
 
 /**
- * Copyright (C) 2017 Wasabeef
- *
+ * Copyright (C) 2020 Wasabeef
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * <p>
  * http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -19,11 +19,14 @@ package jp.wasabeef.example.fresco;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.PointF;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.backends.pipeline.PipelineDraweeController;
 import com.facebook.drawee.drawable.ScalingUtils;
@@ -31,7 +34,9 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import com.facebook.imagepipeline.request.ImageRequest;
 import com.facebook.imagepipeline.request.ImageRequestBuilder;
 import com.facebook.imagepipeline.request.Postprocessor;
+
 import java.util.List;
+
 import jp.wasabeef.fresco.processors.BlurPostprocessor;
 import jp.wasabeef.fresco.processors.ColorFilterPostprocessor;
 import jp.wasabeef.fresco.processors.CombinePostProcessors;
@@ -50,8 +55,8 @@ import jp.wasabeef.fresco.processors.gpu.VignetteFilterPostprocessor;
 
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
-  private Context context;
-  private List<Type> dataSet;
+  private final Context context;
+  private final List<Type> dataSet;
 
   enum Type {
     Mask,
@@ -77,12 +82,15 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
     this.dataSet = dataSet;
   }
 
-  @Override public MainAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+  @NonNull
+  @Override
+  public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
     View v = LayoutInflater.from(context).inflate(R.layout.layout_list_item, parent, false);
     return new ViewHolder(v);
   }
 
-  @Override public void onBindViewHolder(MainAdapter.ViewHolder holder, int position) {
+  @Override
+  public void onBindViewHolder(MainAdapter.ViewHolder holder, int position) {
     Context context = holder.itemView.getContext();
     Postprocessor processor = null;
 
@@ -106,13 +114,13 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         processor = new GrayscalePostprocessor();
         break;
       case Blur:
-        processor = new BlurPostprocessor(context, 25);
+        processor = new BlurPostprocessor(context, 25, 4);
         break;
       case BlurAndGrayscale:
         processor = new CombinePostProcessors.Builder()
-                .add(new BlurPostprocessor(context, 25))
-                .add(new GrayscalePostprocessor())
-                .build();
+          .add(new BlurPostprocessor(context, 25))
+          .add(new GrayscalePostprocessor())
+          .build();
         break;
       case Toon:
         processor = new ToonFilterPostprocessor(context);
@@ -143,23 +151,24 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         break;
       case Vignette:
         processor = new VignetteFilterPostprocessor(context, new PointF(0.5f, 0.5f),
-            new float[] { 0.0f, 0.0f, 0.0f }, 0f, 0.75f);
+          new float[]{0.0f, 0.0f, 0.0f}, 0f, 0.75f);
         break;
     }
     ImageRequest request = ImageRequestBuilder.newBuilderWithResourceId(R.drawable.demo)
-        .setPostprocessor(processor)
-        .build();
+      .setPostprocessor(processor)
+      .build();
 
     PipelineDraweeController controller =
-        (PipelineDraweeController) Fresco.newDraweeControllerBuilder()
-            .setImageRequest(request)
-            .setOldController(holder.drawee.getController())
-            .build();
+      (PipelineDraweeController) Fresco.newDraweeControllerBuilder()
+        .setImageRequest(request)
+        .setOldController(holder.drawee.getController())
+        .build();
     holder.drawee.setController(controller);
     holder.title.setText(dataSet.get(position).name());
   }
 
-  @Override public int getItemCount() {
+  @Override
+  public int getItemCount() {
     return dataSet.size();
   }
 

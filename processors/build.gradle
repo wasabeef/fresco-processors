@@ -1,33 +1,40 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'
 
 android {
   compileSdkVersion COMPILE_SDK_VERSION as int
-  buildToolsVersion BUILD_TOOLS_VERSION
 
   defaultConfig {
     minSdkVersion MIN_SDK_VERSION as int
     targetSdkVersion TARGET_SDK_VERSION as int
-    versionCode "git rev-list origin/master --count".execute().text.toInteger()
-    versionName VERSION_NAME
 
     consumerProguardFiles 'proguard-rules.txt'
   }
 }
 
 dependencies {
-  compile "com.facebook.fresco:fresco:${FRESCO_VERSION}"
-  provided "jp.co.cyberagent.android.gpuimage:gpuimage-library:${GPUIMAGE_VERSION}"
+  implementation "com.facebook.fresco:fresco:${FRESCO_VERSION}"
+  compileOnly "jp.co.cyberagent.android:gpuimage:${GPUIMAGE_VERSION}"
 }
 
-publish {
-  userOrg = POM_DEVELOPER_ID
-  groupId = GROUP
-  artifactId = ARTIFACT_ID
-  publishVersion = VERSION_NAME
-  desc = POM_DESCRIPTION
-  website = POM_URL
-  bintrayUser = BINTRAY_USER
-  bintrayKey = BINTRAY_API_KEY
-  autoPublish = false
+ext {
+  bintrayRepo = 'maven'
+  bintrayName = 'fresco-processors'
+  bintrayUserOrg = 'wasabeef'
+  publishedGroupId = 'jp.wasabeef'
+  libraryName = 'fresco-processors'
+  artifact = 'fresco-processors'
+  libraryDescription = 'which provides simple Prosessors to Fresco'
+  siteUrl = 'https://github.com/wasabeef/fresco-processors'
+  gitUrl = 'https://github.com/wasabeef/fresco-processors.git'
+  issueUrl = 'https://github.com/wasabeef/fresco-processors/issues'
+  libraryVersion = VERSION_NAME
+  developerId = 'wasabeef'
+  developerName = 'Wasabeef'
+  developerEmail = 'dadadada.chop@gmail.com'
+  licenseName = 'The Apache Software License, Version 2.0'
+  licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+  allLicenses = ["Apache-2.0"]
 }
+
+apply from: 'https://gist.githubusercontent.com/wasabeef/cf14805bee509baf7461974582f17d26/raw/bintray-v1.gradle'
+apply from: 'https://gist.githubusercontent.com/wasabeef/cf14805bee509baf7461974582f17d26/raw/install-v1.gradle'
