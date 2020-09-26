@@ -30,7 +30,7 @@ android {
 dependencies {
   compile project(':processors')
   compile "com.facebook.fresco:fresco:${FRESCO_VERSION}"
-  compile "jp.co.cyberagent.android.gpuimage:gpuimage-library:${GPUIMAGE_VERSION}"
   compile "com.android.support:appcompat-v7:${SUPPORT_PACKAGE_VERSION}"
   compile "com.android.support:recyclerview-v7:${SUPPORT_PACKAGE_VERSION}"
+  implementation "jp.co.cyberagent.android.gpuimage:gpuimage-library:${GPUIMAGE_VERSION}"
 }
