@@ -2,6 +2,7 @@ Fresco Processors
 ======================
 [![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 [![Download](https://api.bintray.com/packages/wasabeef/maven/fresco-processors/images/download.svg)](https://bintray.com/wasabeef/maven/fresco-processors/_latestVersion)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/jp.wasabeef/fresco-processors/badge.svg)](https://search.maven.org/artifact/jp.wasabeef/fresco-processors)
 
 An Android image processor library providing a variety of transformations for [Fresco](https://github.com/facebook/fresco).
 
@@ -28,13 +29,13 @@ An Android image processor library providing a variety of transformations for [F
 #### Gradle
 ```groovy
 repositories {
-  jcenter()
+  mavenCentral()
 }
 
 dependencies {
-  implementation 'jp.wasabeef:fresco-processors:2.x.x'
+  implementation 'jp.wasabeef:fresco-processors:2.2.1'
   // If you want to use the GPU Filters
-  implementation 'jp.co.cyberagent.android:gpuimage:2.x.x'
+  implementation 'jp.co.cyberagent.android:gpuimage:2.1.0'
 }
 ```
 
