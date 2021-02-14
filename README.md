@@ -12,7 +12,6 @@
 Fresco Processors
 ======================
 [![License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
-[![Download](https://api.bintray.com/packages/wasabeef/maven/fresco-processors/images/download.svg)](https://bintray.com/wasabeef/maven/fresco-processors/_latestVersion)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/jp.wasabeef/fresco-processors/badge.svg)](https://search.maven.org/artifact/jp.wasabeef/fresco-processors)
 
 An Android image processor library providing a variety of transformations for [Fresco](https://github.com/facebook/fresco).
